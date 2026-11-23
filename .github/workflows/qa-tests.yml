@@ -26,9 +26,9 @@ jobs:
       - name: Run Playwright UI & API tests
         run: pytest
 
-      - name: Upload failure screenshots (if any)
+      - name: Upload failure artifacts (screenshots & traces)
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: failure-screenshots
-          path: artifacts/screenshots/
+          name: failure-artifacts
+          path: artifacts/
