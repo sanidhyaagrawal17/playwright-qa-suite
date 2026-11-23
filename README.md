@@ -5,7 +5,7 @@
 End-to-end **UI automation** and **REST API contract testing** suite built with **Python**, **Playwright**, and **pytest**, structured using the **Page Object Model (POM)** with automatic failure screenshots, Playwright failure traces, and **GitHub Actions CI**.
 
 ## What This Suite Covers
-- **6 UI End-to-End Tests (`tests/test_ui_e2e.py`)** against [SauceDemo](https://www.saucedemo.com/):
+- **6 UI End-to-End Tests (`tests/test_ui_e2e.py`)** against [SauceDemo](https://www.saucedemo.com/) *(a public QA practice site)*:
   - Positive login and inventory page state verification
   - 3 parametrized negative login cases (locked-out user, wrong password, blank username)
   - Price sorting validation (low-to-high numeric order check)
@@ -15,6 +15,10 @@ End-to-end **UI automation** and **REST API contract testing** suite built with 
   - `POST /posts` creation (`201`) and payload echo verification
   - `PUT /posts/1` & `DELETE /posts/1` lifecycle validation
   - Negative `404` error-path check (`GET /posts/999999`)
+- **3 TrustDesk App E2E Tests (`tests/test_trustdesk_e2e.py`)** against my own full-stack [TrustDesk](https://github.com/sanidhyaagrawal17/trustdesk) app (when running locally at `TRUSTDESK_URL`, default `http://localhost:5173`; skipped automatically in CI when no local server is running):
+  - Execution channel toggle (`Untrusted (Public)` ↔ `Trusted (Internal)`), ARIA state checks, and verifying the Bearer token is never persisted to `localStorage`
+  - Sending a loan FAQ query and asserting the streamed SSE response renders in the chat UI
+  - Verifying the `Channel Authorization Failure (HTTP 401)` error state when querying the Trusted channel without a Bearer token
 - **CI/CD & Failure Triage:**
   - `conftest.py` captures full-page screenshots (`artifacts/screenshots/`) and Playwright traces (`artifacts/traces/`) automatically on any UI test failure
   - `.github/workflows/qa-tests.yml` runs all 10 tests headlessly on Ubuntu on every push/PR and uploads failure artifacts
