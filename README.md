@@ -15,7 +15,7 @@ End-to-end **UI automation** and **REST API contract testing** suite built with 
   - `POST /posts` creation (`201`) and payload echo verification
   - `PUT /posts/1` & `DELETE /posts/1` lifecycle validation
   - Negative `404` error-path check (`GET /posts/999999`)
-- **3 TrustDesk App E2E Tests (`tests/test_trustdesk_e2e.py`)** against my own full-stack [TrustDesk](https://github.com/sanidhyaagrawal17/trustdesk) app (when running locally at `TRUSTDESK_URL`, default `http://localhost:5173`; skipped automatically in CI when no local server is running):
+- **3 TrustDesk App E2E Tests (`tests/test_trustdesk_e2e.py`)** against my own full-stack [TrustDesk](https://github.com/sanidhyaagrawal17/trustdesk) app (when running locally at `TRUSTDESK_URL`, default `http://localhost:3000`; skipped automatically in CI when no local server is running):
   - Execution channel toggle (`Untrusted (Public)` ↔ `Trusted (Internal)`), ARIA state checks, and verifying the Bearer token is never persisted to `localStorage`
   - Sending a loan FAQ query and asserting the streamed SSE response renders in the chat UI
   - Verifying the `Channel Authorization Failure (HTTP 401)` error state when querying the Trusted channel without a Bearer token

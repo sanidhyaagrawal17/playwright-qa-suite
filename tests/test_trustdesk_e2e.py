@@ -4,7 +4,7 @@ import pytest
 from playwright.sync_api import expect
 from pages.trustdesk_page import TrustDeskPage
 
-TRUSTDESK_URL = os.getenv("TRUSTDESK_URL", "http://localhost:5173")
+TRUSTDESK_URL = os.getenv("TRUSTDESK_URL", "http://localhost:3000")
 
 
 def _trustdesk_is_reachable(url: str) -> bool:
